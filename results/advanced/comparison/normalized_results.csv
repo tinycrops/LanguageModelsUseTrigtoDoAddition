@@ -1,0 +1,16 @@
+Task,Model,MSE_normalized,MAE_normalized,R2
+addition,helical,0.0000,0.0000,-0.0073
+addition,mlp,1.0000,1.0000,0.9999
+addition,transformer,0.9746,0.8883,0.9743
+subtraction,helical,0.0000,0.0000,-0.0006
+subtraction,mlp,1.0000,1.0000,1.0000
+subtraction,transformer,0.9944,0.9268,0.9944
+multiplication,helical,0.0000,0.0000,-0.0005
+multiplication,mlp,1.0000,1.0000,0.9607
+multiplication,transformer,0.0401,0.0406,0.0381
+squared,helical,0.0000,0.0000,-1.2145
+squared,mlp,1.0000,1.0000,0.9202
+squared,transformer,0.0807,0.0717,-1.0421
+complex,helical,0.0000,0.0000,-0.7089
+complex,mlp,1.0000,1.0000,0.9479
+complex,transformer,0.0579,0.0618,-0.6131
