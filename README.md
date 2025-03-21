@@ -1,105 +1,81 @@
-# Language Models Use Trig to Do Addition
+# Toroidal Manifold Learning
 
-This project demonstrates how language models utilize helical representations for numbers and the Clock algorithm for addition.
+This project explores toroidal manifold learning as an extension of helical hyperspherical networks for machine learning tasks. The implementation demonstrates how using toroidal geometries can improve representation efficiency for data with multiple periodic components.
 
-## Project Overview
+## Overview
 
-Large language models need to represent numbers and perform arithmetic, but how do they actually accomplish this? This repository implements and analyzes the helical representation hypothesis, showing how neural networks can leverage trigonometric functions to perform operations like addition.
+Geometric deep learning explores how different manifold structures affect neural network performance. This project specifically compares:
 
-## Core Implementation Files
+1. **Helical Hyperspherical Networks** - Embedding data onto hyperspheres with helical structure
+2. **Toroidal Networks** - Embedding data onto torus manifolds (product of circles)
 
-- `src/helix_fitting.py`: Implements helical fitting algorithms for neural network representations
-- `src/utils.py`: Utility functions for data processing and analysis
-- `src/number_representation.py`: Extracting number representations from models
-- `src/causal_interventions.py`: Causal analysis of how models perform arithmetic
-- `src/clock_algorithm.py`: Implementation of the Clock algorithm for addition
-- `src/main.py`: Main experimental pipeline
-- `src/demo.py`: Demo script showcasing the key findings
-- `HelicalHypersphericalNetwork.py`: PyTorch implementation of a model that uses helical representations
-- `helical_network_demo.py`: Demonstration of the helical network for addition
+The hypothesis is that toroidal representations can better capture data with multiple independent periodic components.
 
-## Advanced Extensions
+## Files
 
-- `enhanced_helical_network.py`: Enhanced model supporting multiple operations
-- `train_helical_network.py`: Training script for the basic model
-- `advanced_training.py`: Advanced training script for model comparison
-- `enhanced_demo.py`: Demonstration of the enhanced model capabilities
-- `model_analysis.md`: Detailed analysis of the helical network properties
+- `toroidal_network.py` - Implementation of the Toroidal Network architecture
+- `train_toroidal.py` - Training script for Toroidal Networks on synthetic data
+- `experiment_comparison.py` - Comparison between Toroidal and Helical networks
+- `paper.md` - Research paper outline explaining the theoretical foundation
 
-## Installation
+## Requirements
 
-```bash
-pip install -r requirements.txt
+```
+torch
+numpy
+matplotlib
+scikit-learn
 ```
 
 ## Usage
 
-### Basic Demo
-
-Run the basic demo to see how language models use helical representations:
+### Training a Toroidal Network
 
 ```bash
-cd src
-python demo.py
+python train_toroidal.py --n_samples 2000 --epochs 100 --visualize
 ```
 
-This extracts representations from a neural network, fits a helix, and visualizes the results. All output is saved to the `results/demo/` directory.
+Optional arguments:
+- `--n_samples`: Number of synthetic samples (default: 2000)
+- `--noise_level`: Noise level for data generation (default: 0.1)
+- `--output_dim`: Dimension of embeddings (default: 16)
+- `--torus_dims`: Number of torus dimensions (default: 2)
+- `--batch_size`: Training batch size (default: 64)
+- `--learning_rate`: Learning rate (default: 0.001)
+- `--epochs`: Number of training epochs (default: 50)
+- `--task`: Task type: 'classification', 'regression', or 'both' (default: 'both')
+- `--visualize`: Flag to visualize embeddings
 
-### Helical Network Demo
-
-Try the helical network implementation that explicitly uses trigonometric representations:
+### Comparing Networks
 
 ```bash
-python helical_network_demo.py
+python experiment_comparison.py --n_samples 5000 --epochs 100
 ```
 
-This generates visualizations showing how the helical network represents numbers and performs addition.
+This script generates synthetic data with multiple periodic components and trains both Toroidal and Helical networks, comparing their performance on classification and regression tasks.
 
-### Enhanced Model Demo
+## Theory
 
-Explore the enhanced model that supports multiple operations:
+Toroidal manifolds (T^n) are formed as the product of n circles. In contrast to hyperspherical embeddings, toroidal manifolds naturally represent multiple independent periodic variables. For example:
 
-```bash
-python enhanced_demo.py
-```
+- Position on a single circle (S^1) can represent one periodic variable
+- Position on a torus (S^1 × S^1) can represent two independent periodic variables
 
-Outputs visualizations for addition, subtraction, multiplication, squared operations, and complex operations.
+By projecting data onto toroidal manifolds, the network can better model cyclic relationships in multiple dimensions simultaneously, which is particularly useful for:
 
-## Advanced Training
+- Time series with multiple seasonal patterns
+- Periodic physical processes
+- Rotational/angular data with multiple components
 
-To compare different model architectures on arithmetic tasks:
+## Results Visualization
 
-```bash
-python advanced_training.py
-```
+After running the comparison experiment, two visualization files will be generated:
+- `comparison_results.png` - Bar charts comparing accuracy, MSE, and training time
+- `training_loss_curves.png` - Learning curves for both network types
 
-This trains and evaluates three architectures (Helical Network, MLP, Transformer) on five operations.
+## Future Work
 
-## Model Analysis and Comparison
-
-We conducted a comprehensive comparison of the helical network architecture against standard MLPs and transformers. Key findings include:
-
-### Performance Highlights
-
-- **Rapid Convergence**: The helical network converges extremely quickly (often within 1-3 epochs) for operations with natural geometric interpretations like addition and subtraction.
-- **Architectural Efficiency**: While MLPs achieved better final metrics through brute-force learning, they required significantly longer training with unstable learning curves.
-- **Operation Suitability**: The helical representation excels at operations with clear circular interpretations and shows decent performance on other operations through composition.
-
-### Architecture Advantages
-
-1. **Strong Inductive Bias**: By building trigonometric operations directly into the architecture, the helical network dramatically reduces the search space during learning.
-2. **Interpretable Representations**: The network's internal representations have clear geometric meaning, unlike black-box models.
-3. **Parameter Efficiency**: Achieves competitive performance with far fewer parameters than general architectures.
-
-For detailed analysis, see [Model Analysis](model_analysis.md) and [Model Comparison Report](model_comparison_report.md).
-
-## Key Results
-
-- Number representations in neural networks naturally organize into helical structures
-- Addition emerges through the composition of circular rotations at different frequencies
-- The Clock algorithm provides a mechanistic explanation for how models perform addition
-- Specialized architectures leveraging these insights can perform mathematical operations with exceptional efficiency
-
-## License
-
-MIT 
+- Extend to higher-dimensional toroidal manifolds
+- Explore more complex manifold combinations
+- Apply to real-world datasets with known periodic structure
+- Investigate attention mechanisms for weighting different toroidal components 
